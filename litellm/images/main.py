@@ -1107,7 +1107,8 @@ def image_edit(
                         provider_supported_params,
                         additional_drop_params,
                     )
-                    if custom_llm_provider == litellm.LlmProviders.TENCENT.value
+                    if custom_llm_provider
+                    in (litellm.LlmProviders.TENCENT.value, litellm.LlmProviders.OPENROUTER.value)
                     else {}
                 ),
             },
