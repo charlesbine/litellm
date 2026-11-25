@@ -3630,6 +3630,32 @@
         "generateContent": true
       }
     },
+    "runware": {
+      "display_name": "Runware (`runware`)",
+      "url": "https://runware.ai/docs/en/getting-started/introduction",
+      "endpoints": {
+        "chat_completions": false,
+        "responses": false,
+        "text_completion": false,
+        "embeddings": false,
+        "image_generations": true,
+        "image_edits": true,
+        "audio_transcriptions": false,
+        "audio_speech": false,
+        "rerank": false,
+        "ocr": false,
+        "search": false,
+        "moderations": false,
+        "realtime": false,
+        "video_generations": true,
+        "batches": false,
+        "messages": false,
+        "interactions": false,
+        "systemone": false,
+        "a2a": false,
+        "generateContent": false
+      }
+    },
     "runwayml": {
       "display_name": "RunwayML (`runwayml`)",
       "url": "https://docs.litellm.ai/docs/providers/runwayml/videos",

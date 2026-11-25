@@ -127064,5 +127064,72 @@
             "/v1/images/generations"
         ],
         "supports_vision": true
+    },
+    "runware/runware:100@1": {
+        "litellm_provider": "runware",
+        "mode": "image_generation",
+        "output_cost_per_image": 0.0006,
+        "source": "https://runware.ai/docs/en/image-inference/api-reference",
+        "supported_endpoints": [
+            "/v1/images/generations",
+            "/v1/images/edits"
+        ],
+        "supported_modalities": [
+            "text",
+            "image"
+        ],
+        "supported_output_modalities": [
+            "image"
+        ]
+    },
+    "runware/runware:101@1": {
+        "litellm_provider": "runware",
+        "mode": "image_generation",
+        "output_cost_per_image": 0.0038,
+        "source": "https://runware.ai/docs/en/image-inference/api-reference",
+        "supported_endpoints": [
+            "/v1/images/generations",
+            "/v1/images/edits"
+        ],
+        "supported_modalities": [
+            "text",
+            "image"
+        ],
+        "supported_output_modalities": [
+            "image"
+        ]
+    },
+    "runware/bfl:3@1": {
+        "litellm_provider": "runware",
+        "mode": "image_edit",
+        "output_cost_per_image": 0.04,
+        "source": "https://runware.ai/docs/en/image-inference/api-reference",
+        "supported_endpoints": [
+            "/v1/images/edits",
+            "/v1/images/generations"
+        ],
+        "supported_modalities": [
+            "text",
+            "image"
+        ],
+        "supported_output_modalities": [
+            "image"
+        ]
+    },
+    "runware/bytedance:2@2": {
+        "litellm_provider": "runware",
+        "mode": "video_generation",
+        "output_cost_per_second": 0.036,
+        "source": "https://runware.ai/docs/en/video-inference/api-reference",
+        "supported_endpoints": [
+            "/v1/videos"
+        ],
+        "supported_modalities": [
+            "text",
+            "image"
+        ],
+        "supported_output_modalities": [
+            "video"
+        ]
     }
 }

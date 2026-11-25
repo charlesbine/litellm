@@ -292,6 +292,7 @@ llama_api_key: Optional[str] = None
 aleph_alpha_key: Optional[str] = None
 nlp_cloud_key: Optional[str] = None
 novita_api_key: Optional[str] = None
+runware_api_key: Optional[str] = None
 snowflake_key: Optional[str] = None
 gradient_ai_api_key: Optional[str] = None
 nebius_key: Optional[str] = None
@@ -664,6 +665,7 @@ bigmodel_models: Final[set[str]] = set()  # mutable-ok: provider registry is pop
 deepseek_models: Set[str] = set()
 tencent_models: Set[str] = set()
 runwayml_models: Set[str] = set()
+runware_models: Set[str] = set()
 azure_ai_models: Set[str] = set()
 jina_ai_models: Set[str] = set()
 voyage_models: Set[str] = set()
@@ -923,6 +925,8 @@ def _populate_provider_model_sets(model_cost_map: Mapping[str, Mapping[str, obje
             tencent_models.add(key)
         elif value.get("litellm_provider") == "runwayml":
             runwayml_models.add(key)
+        elif value.get("litellm_provider") == "runware":
+            runware_models.add(key)
         elif value.get("litellm_provider") == "meta_llama":
             llama_models.add(key)
         elif value.get("litellm_provider") == "nscale":
@@ -1168,6 +1172,7 @@ model_list = list(
     | zai_models
     | bigmodel_models
     | fal_ai_models
+    | runware_models
     | deepseek_models
     | modelscope_models
     | azure_ai_models
@@ -1303,6 +1308,7 @@ def _build_models_by_provider() -> dict[str, Collection[str]]:
         "deepseek": deepseek_models,
         "tencent": tencent_models,
         "runwayml": runwayml_models,
+        "runware": runware_models,
         "mistral": mistral_chat_models,
         "azure_ai": azure_ai_models,
         "voyage": voyage_models,

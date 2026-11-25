@@ -4962,6 +4962,7 @@ class LlmProviders(str, Enum):
     BEDROCK_MANTLE = "bedrock_mantle"
     GDC = "gdc"
     KYMA = "kyma"
+    RUNWARE = "runware"
 
 
 # Create a set of all provider values for quick lookup

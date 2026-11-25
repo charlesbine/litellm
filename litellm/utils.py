@@ -8920,6 +8920,11 @@ def validate_environment(
                 keys_in_environment = True
             else:
                 missing_keys.append("NOVITA_API_KEY")
+        elif custom_llm_provider == "runware":
+            if "RUNWARE_API_KEY" in os.environ:
+                keys_in_environment = True
+            else:
+                missing_keys.append("RUNWARE_API_KEY")
         elif custom_llm_provider == "nebius":
             if "NEBIUS_API_KEY" in os.environ:
                 keys_in_environment = True
@@ -9044,6 +9049,11 @@ def validate_environment(
                 keys_in_environment = True
             else:
                 missing_keys.append("NOVITA_API_KEY")
+        elif model in litellm.runware_models:
+            if "RUNWARE_API_KEY" in os.environ:
+                keys_in_environment = True
+            else:
+                missing_keys.append("RUNWARE_API_KEY")
         elif model in litellm.nebius_models:
             if "NEBIUS_API_KEY" in os.environ:
                 keys_in_environment = True
@@ -11907,6 +11917,12 @@ class ProviderConfigManager:
             from litellm.llms.minimax.image_generation import MinimaxImageGenerationConfig
 
             return MinimaxImageGenerationConfig()
+        elif LlmProviders.RUNWARE == provider:
+            from litellm.llms.runware.image_generation import (
+                get_runware_image_generation_config,
+            )
+
+            return get_runware_image_generation_config(model)
         return None
 
     @staticmethod
@@ -11971,6 +11987,10 @@ class ProviderConfigManager:
             from litellm.llms.volcengine.videos.transformation import VolcEngineVideoConfig
 
             return VolcEngineVideoConfig()
+        elif LlmProviders.RUNWARE == provider:
+            from litellm.llms.runware.videos.transformation import RunwareVideoConfig
+
+            return RunwareVideoConfig()
         return None
 
     @staticmethod
@@ -12174,6 +12194,10 @@ class ProviderConfigManager:
             )
 
             return TencentImageEditConfig() if is_tokenhub_image_model(model) else None
+        elif LlmProviders.RUNWARE == provider:
+            from litellm.llms.runware.image_edit import get_runware_image_edit_config
+
+            return get_runware_image_edit_config(model)
         return None
 
     @staticmethod

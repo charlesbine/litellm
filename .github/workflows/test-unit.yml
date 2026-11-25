@@ -364,6 +364,7 @@ jobs:
               tests/unit/llms/recraft
               tests/unit/llms/reducto
               tests/unit/llms/replicate
+              tests/unit/llms/runware
               tests/unit/llms/runwayml
               tests/unit/llms/s3_vectors
               tests/unit/llms/sagemaker
