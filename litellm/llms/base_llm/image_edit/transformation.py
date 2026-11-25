@@ -141,6 +141,18 @@ class BaseImageEditConfig(ABC):
     ) -> ImageResponse:
         pass
 
+    async def async_transform_image_edit_response(
+        self,
+        model: str,
+        raw_response: httpx.Response,
+        logging_obj: LiteLLMLoggingObj,
+    ) -> ImageResponse:
+        return self.transform_image_edit_response(
+            model=model,
+            raw_response=raw_response,
+            logging_obj=logging_obj,
+        )
+
     def get_request_count(self, model: str, image_edit_optional_request_params: Mapping[str, object]) -> int:
         """
         Number of identical upstream requests the handler sends and merges into one response.

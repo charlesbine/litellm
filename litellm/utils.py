@@ -11907,6 +11907,12 @@ class ProviderConfigManager:
             from litellm.llms.minimax.image_generation import MinimaxImageGenerationConfig
 
             return MinimaxImageGenerationConfig()
+        elif LlmProviders.NOVITA == provider:
+            from litellm.llms.novita.image_generation import (
+                get_novita_image_generation_config,
+            )
+
+            return get_novita_image_generation_config(model)
         return None
 
     @staticmethod
@@ -11971,6 +11977,10 @@ class ProviderConfigManager:
             from litellm.llms.volcengine.videos.transformation import VolcEngineVideoConfig
 
             return VolcEngineVideoConfig()
+        elif LlmProviders.NOVITA == provider:
+            from litellm.llms.novita.videos.transformation import NovitaVideoConfig
+
+            return NovitaVideoConfig()
         return None
 
     @staticmethod
@@ -12174,6 +12184,10 @@ class ProviderConfigManager:
             )
 
             return TencentImageEditConfig() if is_tokenhub_image_model(model) else None
+        elif LlmProviders.NOVITA == provider:
+            from litellm.llms.novita.image_edit import get_novita_image_edit_config
+
+            return get_novita_image_edit_config(model)
         return None
 
     @staticmethod

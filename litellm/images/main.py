@@ -494,6 +494,7 @@ def image_generation(
             litellm.LlmProviders.QWEN_AI_PLATFORM,
             litellm.LlmProviders.EDENAI,
             litellm.LlmProviders.MINIMAX,
+            litellm.LlmProviders.NOVITA,
         ) or (custom_llm_provider == litellm.LlmProviders.TENCENT and image_generation_config is not None):
             if image_generation_config is None:
                 raise ValueError(f"image generation config is not supported for {custom_llm_provider}")
@@ -517,7 +518,8 @@ def image_generation(
                 logging_obj=litellm_logging_obj,
                 timeout=timeout,
                 client=client,
-                _is_async=aimg_generation is True and custom_llm_provider == litellm.LlmProviders.REPLICATE,
+                _is_async=aimg_generation is True
+                and custom_llm_provider in (litellm.LlmProviders.REPLICATE, litellm.LlmProviders.NOVITA),
             )
         elif custom_llm_provider == "black_forest_labs":
             # Route to BFL-specific handler (polling required)
@@ -860,7 +862,9 @@ def image_variation(
 _IMAGE_EDIT_OPENAI_PARAMS: Final = frozenset(get_type_hints(ImageEditOptionalRequestParams))
 _DROP_PARAM_KWARGS: Final = frozenset({"drop_params", "additional_drop_params"})
 _ADDITIONAL_DROP_PARAMS: Final = TypeAdapter[tuple[object, ...]](tuple[object, ...])
-_PASSTHROUGH_EDIT_PROVIDERS: Final = frozenset({litellm.LlmProviders.TENCENT.value, litellm.LlmProviders.MINIMAX.value})
+_PASSTHROUGH_EDIT_PROVIDERS: Final = frozenset(
+    {litellm.LlmProviders.TENCENT.value, litellm.LlmProviders.MINIMAX.value, litellm.LlmProviders.NOVITA.value}
+)
 
 
 def _listed_drop_params(additional_drop_params: object) -> tuple[str, ...]:

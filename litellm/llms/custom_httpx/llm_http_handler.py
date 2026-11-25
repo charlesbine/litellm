@@ -7887,7 +7887,7 @@ class BaseLLMHTTPHandler:
             else (streamed,)
         )
         served: Final = [
-            image_edit_provider_config.transform_image_edit_response(
+            await image_edit_provider_config.async_transform_image_edit_response(
                 model=model,
                 raw_response=response,
                 logging_obj=logging_obj,
